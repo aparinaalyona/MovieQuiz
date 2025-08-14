@@ -6,7 +6,9 @@ final class MovieQuizViewController: UIViewController {
     @IBOutlet private var previewImage: UIImageView!
     @IBOutlet private var questionTitle: UILabel!
     @IBOutlet private var questionTitleLabel: UILabel!
-
+    @IBOutlet private weak var yesButton: UILabel!
+    @IBOutlet private weak var noButton: UILabel!
+    
     // MARK: - Properties
     private let questions: [QuizQuestion] = [
         QuizQuestion(image: "The Godfather", question: "Рейтинг этого фильма больше чем 6?", correctAnswer: true),
@@ -38,6 +40,9 @@ final class MovieQuizViewController: UIViewController {
         idexLabel.font = UIFont(name: "YSDisplay-Medium", size: 20)
         questionTitle.font = UIFont(name: "YSDisplay-Bold", size: 23)
         questionTitleLabel.font = UIFont(name: "YSDisplay-Medium", size: 20)
+        yesButton.font = UIFont(name: "YSDisplay-Medium", size: 20)
+        noButton.font = UIFont(name: "YSDisplay-Medium", size: 20)
+        
     }
 
     // MARK: - IBActions
