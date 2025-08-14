@@ -4,7 +4,7 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet private var idexLabel: UILabel!
     @IBOutlet private var previewImage: UIImageView!
-    @IBOutlet var questionTitle: UILabel!
+    @IBOutlet private var questionTitle: UILabel!
     @IBOutlet private var questionTitleLabel: UILabel!
 
     // MARK: - Properties
@@ -30,6 +30,14 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let firstQuestion = questions[currentQuestionIndex]
+        let viewModel = convert(model: firstQuestion)
+        show(quiz: viewModel)
+        
+        idexLabel.font = UIFont(name: "YSDisplay-Medium", size: 20)
+        questionTitle.font = UIFont(name: "YSDisplay-Bold", size: 23)
+        questionTitleLabel.font = UIFont(name: "YSDisplay-Medium", size: 20)
     }
 
     // MARK: - IBActions
@@ -98,6 +106,8 @@ final class MovieQuizViewController: UIViewController {
     }
 
     private func showNextQuestionOrResults() {
+        previewImage.layer.borderWidth = 0
+        previewImage.layer.borderColor = UIColor.clear.cgColor
         if currentQuestionIndex == questions.count - 1 {
             let text = "Ваш результат: \(correctAnswers)/10"
             let viewModel = QuizResultsViewModel( // 2
@@ -129,7 +139,7 @@ final class MovieQuizViewController: UIViewController {
         let questionNumber: String
     }
 
-    struct QuizResultsViewModel {
+    private struct QuizResultsViewModel {
         let title: String
         let text: String
         let buttonText: String
