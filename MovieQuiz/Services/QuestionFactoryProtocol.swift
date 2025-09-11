@@ -6,6 +6,7 @@
 //
 
 protocol QuestionFactoryProtocol {
+    func loadData()
     func requestNextQuestion()
     func restart()
 }
